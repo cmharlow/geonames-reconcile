@@ -14,8 +14,9 @@ Please give any thanks for this work to Ted Lawless, and any complaints to Chris
 ##Special Notes
 
 This came out of frustration that the Library of Congress authorities are: 
-1. haphazard in containing Latitude and Longitude in the authority records for geographic names/subjects (although a requirement for authorities now, many such authorities do not contain the coordinates currently)
-2. the way that the Library of Congress authorities formulate place names for primary headings (not as subdivisions) would often return no results in the GeoNames API because of abbreviations, many of which for U.S. states were unique to the Library of Congress authorities (for example, 'Calif.' for headings of cities in California). 
+
+- haphazard in containing Latitude and Longitude in the authority records for geographic names/subjects (although a requirement for authorities now, many such authorities do not contain the coordinates currently)
+- the way that the Library of Congress authorities formulate place names for primary headings (not as subdivisions) would often return no results in the GeoNames API because of abbreviations, many of which for U.S. states were unique to the Library of Congress authorities (for example, 'Calif.' for headings of cities in California). 
 
 So this service takes Library of Congress authorities headings (or headings formulated to mimic the LoC authorities structure), expand U.S. abbreviations, then reconcile against GeoNames. The returned GeoNames 'name' gives both the GeoNames name for the location as well as the coordinates. There are, no doubts, better ways to handle getting both in an OpenRefine reconciliation service, but this was a quick hack to get both while I continue to explore how OpenRefine Reconciliation Services are structured.
 
