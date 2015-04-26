@@ -33,6 +33,7 @@ except ImportError:
 
 #Helper text processing
 import text
+import lc_parse
 
 #Map the GeoNames query indexes to service types
 default_query = {
@@ -56,21 +57,6 @@ refine_to_geonames = [
         "id": "/geonames/name_equals",
         "name": "Exact Place Name",
         "index": "name_equals"
-    },
-    {
-        "id": "/geonames/country",
-        "name": "Country Code (ISO-3166) Parameter",
-        "index": "country"
-    },
-    {
-        "id": "/geonames/countryBias",
-        "name": "Country Bias Parameter",
-        "index": "countryBias"
-    },
-    {
-        "id": "/geonames/countryBias",
-        "name": "Search Language Parameter",
-        "index": "searchlang"
     }
 ]
 refine_to_geonames.append(default_query)
@@ -88,7 +74,6 @@ metadata = {
         "url": "{{id}}"
     }
 }
-
 
 def make_uri(geonames_id):
     """
@@ -117,7 +102,8 @@ def search(raw_query, query_type='/geonames/all'):
     """
     out = []
     unique_geonames_ids = []
-    query = text.normalize(raw_query)
+    mid_query = lc_parse.lc2geonames(raw_query)
+    query = text.normalize(mid_query).strip()
     query_type_meta = [i for i in refine_to_geonames if i['id'] == query_type]
     if query_type_meta == []:
         query_type_meta = default_query
