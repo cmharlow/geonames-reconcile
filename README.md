@@ -43,7 +43,20 @@ To do so, go to this webpage and register: http://www.geonames.org/login
 - You should now be greeted by a list of possible reconciliation types for the GeoNames Reconciliation Service. They should be fairly straight-forward to understand, and use /geonames/all if you need the broadest search capabilities possible.
 - Click 'Start Reconciling' in the bottom right corner.
 - Once finished, you should see the closest options that the GeoNames API found for each cell. You can click on the options and be taken to the GeoNames site for that entry. Once you find the appropriate reconciliation choice, click the single arrow box beside it to use that choice just for the one cell, or the double arrows box to use that choice for all other cells containing that text.
-- Once you've got your reconciliation choices done or rejected, you then need 
+- Once you've got your reconciliation choices done or rejected, you then need to store the GeoNames name, id, and coordinates (or any subset of those that you want to keep in the data) in your OpenRefine project. This is important:
+
+`Although it appears that you have retrieved your reconciled data into your OpenRefine project, OpenRefine is actually storing the original data still. You need to explicit save the reconciled data in order to make sure it appears/exists when you export your data. Annoying as mosquito in your bedroom, I know, but please learn from my own mistakes, sweat and confusion.`
+
+- So, depending on whether or not you wish to keep the original data, you can replace the column with the reconciled data or add a column that contains the reconciled data. I'll do the latter here. On the reconciled data column, click the arrow at the top, then Choose 'Edit Columns' > 'Add a new column based on this column'
+- In the GREL box that appears, put the following depending on what you want to pull:
+	- Name and Coordinates: cell.recon.match.name (will pull the GeoNames Name plus coordinates, separated by a | - you can split that column later to have just name then coordinates)
+	- URI: cell.recon.match.id (will pull the GeoNames URI/link)
+	- Coordinates Only: replace(substring(cell.recon.match.name, indexOf(cell.recon.match.name, ' | ')), ' | ', '')
+	- Name, Coordinates, and URI each separated by | (for easier column splitting later): cell.recon.match.name + " | " + cell.recon.match.id
+
+I'll maybe make a screencast of this work later if I get time or there is interested.
+
+Holla if you have questions - email is charlow2(at)utk(dot)edu and Twitter handle is @cm_harlow
 
 
 ##Plans for Improvement
