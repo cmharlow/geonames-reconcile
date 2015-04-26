@@ -3,24 +3,19 @@ An OpenRefine reconciliation service for the API provided GeoNames.
 
 GeoNames API documentation: http://www.geonames.org/export/web-services.html
 
-This code is adapted from the wonderful Ted Lawless: https://github.com/lawlesst/fast-reconcile
+This code is adapted from the wonderful Ted Lawless' work at https://github.com/lawlesst/fast-reconcile
 """
-
 from flask import Flask
 from flask import request
 from flask import jsonify
-
 import json
 from operator import itemgetter
 import urllib
-
 from fuzzywuzzy import fuzz
 import requests
+from sys import argv
 
 app = Flask(__name__)
-
-api_base_url = 'http://api.geonames.org/searchJSON?username=charlow2&isNameRequired=yes&'
-geonames_uri_base = 'http://sws.geonames.org/{0}'
 
 #If it's installed, use the requests_cache library to
 #cache calls to the GeoNames API.
@@ -31,9 +26,18 @@ except ImportError:
     app.logger.debug("No request cache found.")
     pass
 
-#Helper text processing
+#Help text processing
 import text
 import lc_parse
+
+#**************************************
+#ENTER YOUR GEONAMES API USERNAME HERE
+geonames_username = ''
+#**************************************
+
+#Create base URLs/URIs
+api_base_url = 'http://api.geonames.org/searchJSON?username=' + geonames_username + '&isNameRequired=yes&'
+geonames_uri_base = 'http://sws.geonames.org/{0}'
 
 #Map the GeoNames query indexes to service types
 default_query = {
