@@ -5,7 +5,9 @@ An OpenRefine reconciliation service for [GeoNames](http://www.geonames.org/).
 The service queries the [GeoNames API](http://www.geonames.org/export/web-services.html)
 and provides normalized scores across queries for reconciling in Refine.
 
-I'm just a small-town (but refusing to be small-time) metadataist in a big code world, so please don't assume I did something 'the hard way' because I had a theory or opinion or whatnot. I probably just didn't know an easier way exists. So please share your corrections and thoughts (but please don't be a jerk about it either).
+I'm just a small-town (but refusing to be small-time) metadataist in a big code world, so please don't assume I did something 'the hard way' because I had a theory or opinion or whatnot. I probably just don't know that an easier way exists. So please share your corrections and thoughts (but please don't be a jerk about it either).
+
+If you'd like to hear my thoughts about why do this instead of creating a column by pulling in URLs, or what I do with this data once I export my data to metadata records, or if we should even have to keep coordinates in bibliographic metadata records, I'm writing a blog about it and will post the link here.
 
 ##Provenance
 
@@ -37,7 +39,12 @@ To do so, go to this webpage and register: http://www.geonames.org/login
 - Leaving that terminal window open, go start up OpenRefine (however you normally go about it). Open a project in OpenRefine.
 - On the column you would like to reconcile with GeoNames, click on the arrow at the top, choose 'Reconcile' > 'Start Reconciling...'
 - Click on the 'Add Standard Service' button in the bottom left corner. 
-- Now enter the URL that the local 
+- Now enter the URL that the local service is running on - if you've changed nothing in the code except your GeoNames API username, it should be 'http://0.0.0.0:5000/reconcile'. Click Add Service.
+- You should now be greeted by a list of possible reconciliation types for the GeoNames Reconciliation Service. They should be fairly straight-forward to understand, and use /geonames/all if you need the broadest search capabilities possible.
+- Click 'Start Reconciling' in the bottom right corner.
+- Once finished, you should see the closest options that the GeoNames API found for each cell. You can click on the options and be taken to the GeoNames site for that entry. Once you find the appropriate reconciliation choice, click the single arrow box beside it to use that choice just for the one cell, or the double arrows box to use that choice for all other cells containing that text.
+- Once you've got your reconciliation choices done or rejected, you then need 
+
 
 ##Plans for Improvement
 
