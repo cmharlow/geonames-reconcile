@@ -140,15 +140,17 @@ def search(raw_query, query_type='/geonames/all'):
             alt = ''
         geonames_id = item.get('geonameId')
         geonames_uri = make_uri(geonames_id)
-        #The GeoNames service returns some duplicates.  Avoid returning many of the
-        #same result
+        lat = item.get('lat')
+        lng = item.get('lng')
+        #Way to cheat + get name + coordinates into results:
+        name_coords = name + ' | ' + lat + ', ' + lng
+        #Avoid returning duplicates:
         if geonames_id in unique_geonames_ids:
             continue
         else:
             unique_geonames_ids.append(geonames_id)
         score_1 = fuzz.token_sort_ratio(query, name)
         score_2 = fuzz.token_sort_ratio(query, alt)
-        #Return a maximum score
         score = max(score_1, score_2)
         if query == text.normalize(name):
             match = True
@@ -156,7 +158,7 @@ def search(raw_query, query_type='/geonames/all'):
             match = True
         resource = {
             "id": geonames_uri,
-            "name": name,
+            "name": name_coords,
             "score": score,
             "match": match,
             "type": query_type_meta
