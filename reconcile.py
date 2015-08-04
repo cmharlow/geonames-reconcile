@@ -16,6 +16,9 @@ import requests
 from sys import argv
 
 app = Flask(__name__)
+app.config.from_object('config')
+
+geonames_username = app.config['GEONAMES_USERNAME']
 
 #If it's installed, use the requests_cache library to
 #cache calls to the GeoNames API.
@@ -29,11 +32,6 @@ except ImportError:
 #Help text processing
 import text
 import lc_parse
-
-#**************************************
-#ENTER YOUR GEONAMES API USERNAME HERE
-geonames_username = ''
-#**************************************
 
 #Create base URLs/URIs
 api_base_url = 'http://api.geonames.org/searchJSON?username=' + geonames_username + '&isNameRequired=yes&'
