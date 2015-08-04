@@ -26,7 +26,7 @@ So this service takes Library of Congress authorities headings (or headings form
 
 ##Instructions
 
-Before getting started, you'll need python on your computer (this was built/tested with python 2.7.8, should work with python 3 too) and be comfortable using OpenRefine/Google Refine. 
+Before getting started, you'll need python on your computer (this was built/tested with python 2.7.8 &mdash; if you want to run under python 3, you'll need to make some small changes) and be comfortable using OpenRefine/Google Refine. 
 
 This reconciliation service also requires a GeoNames API username. You can find and use the one used in the original code for testing, but you'll run against maximum number counts quickly, so it is strongly recommended you get your own (free, quick & easy to obtain) GeoNames account.
 
