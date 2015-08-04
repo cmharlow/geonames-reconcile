@@ -5,7 +5,7 @@ An OpenRefine reconciliation service for [GeoNames](http://www.geonames.org/).
 The service queries the [GeoNames API](http://www.geonames.org/export/web-services.html)
 and provides normalized scores across queries for reconciling in Refine.
 
-I'm just a small-town (but refusing to be small-time) metadataist in a big code world, so please don't assume I did something 'the hard way' because I had a theory or opinion or whatnot. I probably just don't know that an easier way exists. So please share your corrections and thoughts (but please don't be a jerk about it either).
+I'm just a small-town metadataist in a big code world, so please don't assume I did something 'the hard way' because I had a theory or opinion or whatnot. I probably just don't know that an easier way exists. So please share your corrections and thoughts (but please don't be a jerk about it either).
 
 If you'd like to hear my thoughts about why do this instead of creating a column by pulling in URLs, or what I do with this data once I export my data to metadata records, or if we should even have to keep coordinates in bibliographic metadata records, see some thoughts here: http://christinaharlow.com/thoughts-on-geospatial-metadata/ and http://christinaharlow.com/walkthrough-of-geonames-recon-service/
 
@@ -13,7 +13,7 @@ If you'd like to hear my thoughts about why do this instead of creating a column
 
 Michael Stephens wrote a [demo reconcilliation service](https://github.com/mikejs/reconcile-demo) and Ted Lawless wrote a [FAST reconciliation service](https://github.com/lawlesst/fast-reconcile) that this code basically repeats but for a different API.
 
-Please give any thanks for this work to Ted Lawless, and any complaints to Christina.
+Please give any thanks for this work to Ted Lawless, and any complaints to Christina. Also give thanks to Trevor Muñoz for some cleanups to make this code easier to work with.
 
 ##Special Notes
 
@@ -32,11 +32,15 @@ This reconciliation service also requires a GeoNames API username. You can find 
 
 To do so, go to this webpage and register: http://www.geonames.org/login
 
-- Once you have your GeoNames username, go ahead and clone/download/get a copy of this code repository on your computer.
-- Open up reconcile.py and add your username to the variable declaration on line 35 (e.g. geonames_username = 'my_user_name'). Save the file on your computer.
-- In the Command Line Interface of your choice (Terminal on my Mac), cd to the directory where you downloaded this code and type in: python reconcile.py --debug (you don't need to use debug but this is helpful for knowing what this service is up to while you are working with it).
+- Once you have your GeoNames username, create an environment variable on your computer with your Geonames username as so:
+	- Open the Command Line Interface of your choice (Terminal on is default on a Mac)
+	- Type in $ export GEONAMES_USERNAME="username" (replacing username with your username)
+	- You may need to restart your terminal window, but probably not.
+- Go ahead and clone/download/get a copy of this code repository on your computer.
+- In the Command Line Interface, change to the directory where you downloaded this code (cd directory/with/code/ )
+- Type in: python reconcile.py --debug (you don't need to use debug but this is helpful for knowing what this service is up to while you are working with it).
 - You should see a screen telling you that the service is 'Running on http://0.0.0.0:5000/'.
-- Leaving that terminal window open, go start up OpenRefine (however you normally go about it). Open a project in OpenRefine.
+- Leaving that terminal window open and the service running, go start up OpenRefine (however you normally go about it). Open a project in OpenRefine.
 - On the column you would like to reconcile with GeoNames, click on the arrow at the top, choose 'Reconcile' > 'Start Reconciling...'
 - Click on the 'Add Standard Service' button in the bottom left corner. 
 - Now enter the URL that the local service is running on - if you've changed nothing in the code except your GeoNames API username, it should be 'http://0.0.0.0:5000/reconcile'. Click Add Service.
