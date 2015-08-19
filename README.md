@@ -31,6 +31,7 @@ Before getting started, you'll need python on your computer (this was built/test
 This reconciliation service also requires a GeoNames API username. You can find and use the one used in the original code for testing, but you'll run against maximum number counts quickly, so it is strongly recommended you get your own (free, quick & easy to obtain) GeoNames account.
 
 To do so, go to this webpage and register: http://www.geonames.org/login
+After your account is activated, enable it for free web services: http://www.geonames.org/manageaccount
 
 - Once you have your GeoNames username, create an environment variable on your computer with your Geonames username as so:
 	- Open the Command Line Interface of your choice (Terminal on is default on a Mac)
@@ -44,6 +45,7 @@ To do so, go to this webpage and register: http://www.geonames.org/login
 - On the column you would like to reconcile with GeoNames, click on the arrow at the top, choose 'Reconcile' > 'Start Reconciling...'
 - Click on the 'Add Standard Service' button in the bottom left corner. 
 - Now enter the URL that the local service is running on - if you've changed nothing in the code except your GeoNames API username, it should be 'http://0.0.0.0:5000/reconcile'. Click Add Service.
+	- If nothing happens upon entering 'http://0.0.0.0:5000/reconcile', try 'http://localhost:5000/reconcile' or 'http://127.0.0.1:5000/reconcile' instead.
 - You should now be greeted by a list of possible reconciliation types for the GeoNames Reconciliation Service. They should be fairly straight-forward to understand, and use /geonames/all if you need the broadest search capabilities possible.
 - Click 'Start Reconciling' in the bottom right corner.
 - Once finished, you should see the closest options that the GeoNames API found for each cell. You can click on the options and be taken to the GeoNames site for that entry. Once you find the appropriate reconciliation choice, click the single arrow box beside it to use that choice just for the one cell, or the double arrows box to use that choice for all other cells containing that text.
