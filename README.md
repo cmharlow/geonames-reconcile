@@ -31,6 +31,7 @@ Before getting started, you'll need python on your computer (this was built/test
 This reconciliation service also requires a GeoNames API username. You can find and use the one used in the original code for testing, but you'll run against maximum number counts quickly, so it is strongly recommended you get your own (free, quick & easy to obtain) GeoNames account.
 
 To do so, go to this webpage and register: http://www.geonames.org/login
+After your account is activated, enable it for free web services: http://www.geonames.org/manageaccount
 
 - Once you have your GeoNames username, create an environment variable on your computer with your Geonames username as so:
 	- Open the Command Line Interface of your choice (Terminal on is default on a Mac)
