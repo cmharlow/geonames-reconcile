@@ -45,6 +45,7 @@ After your account is activated, enable it for free web services: http://www.geo
 - On the column you would like to reconcile with GeoNames, click on the arrow at the top, choose 'Reconcile' > 'Start Reconciling...'
 - Click on the 'Add Standard Service' button in the bottom left corner. 
 - Now enter the URL that the local service is running on - if you've changed nothing in the code except your GeoNames API username, it should be 'http://0.0.0.0:5000/reconcile'. Click Add Service.
+	- If nothing happens upon entering 'http://0.0.0.0:5000/reconcile', try 'http://localhost:5000/reconcile' or 'http://127.0.0.1:5000/reconcile' instead.
 - You should now be greeted by a list of possible reconciliation types for the GeoNames Reconciliation Service. They should be fairly straight-forward to understand, and use /geonames/all if you need the broadest search capabilities possible.
 - Click 'Start Reconciling' in the bottom right corner.
 - Once finished, you should see the closest options that the GeoNames API found for each cell. You can click on the options and be taken to the GeoNames site for that entry. Once you find the appropriate reconciliation choice, click the single arrow box beside it to use that choice just for the one cell, or the double arrows box to use that choice for all other cells containing that text.
