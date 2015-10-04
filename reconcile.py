@@ -115,7 +115,7 @@ def search(raw_query, query_type='/geonames/all'):
         app.logger.debug("GeoNames API url is " + url)
         resp = requests.get(url)
         results = resp.json()
-    except Exception, e:
+    except getopt.GetoptError as e:
         app.logger.warning(e)
         return out
     for position, item in enumerate(results['geonames']):
