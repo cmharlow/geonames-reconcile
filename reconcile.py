@@ -14,6 +14,7 @@ import urllib
 from fuzzywuzzy import fuzz
 import requests
 from sys import argv
+from sys import version_info
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -28,6 +29,9 @@ try:
 except ImportError:
     app.logger.debug("No request cache found.")
     pass
+
+#See if Python 3 for unicode/str use decisions
+PY3 = version_info > (3,)
 
 #Help text processing
 import text
