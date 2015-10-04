@@ -5,7 +5,7 @@ https://github.com/okfn/helmut/blob/master/helmut/text.py
 
 from unicodedata import normalize as ucnorm, category
 
-def normalize(text):
+def normalize(text, PY3):
     """ Simplify a piece of text to generate a more canonical
     representation. This involves lowercasing, stripping trailing
     spaces, removing symbols, diacritical marks (umlauts) and
@@ -43,7 +43,7 @@ def normalize(text):
     text = text.strip()
     return ucnorm('NFKC', text)
 
-def url_slug(text):
+def url_slug(text, PY3):
     text = normalize(text)
     text = text.replace(' ', '-')
     text = text.replace('.', '_')

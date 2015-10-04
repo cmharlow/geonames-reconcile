@@ -108,8 +108,8 @@ def search(raw_query, query_type='/geonames/all'):
     """
     out = []
     unique_geonames_ids = []
-    mid_query = lc_parse.lc2geonames(raw_query)
-    query = text.normalize(mid_query).strip()
+    mid_query = lc_parse.lc2geonames(raw_query, PY3)
+    query = text.normalize(mid_query, PY3).strip()
     query_type_meta = [i for i in refine_to_geonames if i['id'] == query_type]
     if query_type_meta == []:
         query_type_meta = default_query
@@ -147,9 +147,9 @@ def search(raw_query, query_type='/geonames/all'):
         score_1 = fuzz.token_sort_ratio(query, name)
         score_2 = fuzz.token_sort_ratio(query, alt)
         score = max(score_1, score_2)
-        if query == text.normalize(name):
+        if query == text.normalize(name, PY3):
             match = True
-        elif query == text.normalize(alt):
+        elif query == text.normalize(alt, PY3):
             match = True
         resource = {
             "id": geonames_uri,

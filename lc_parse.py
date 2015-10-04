@@ -1,6 +1,6 @@
 from unicodedata import normalize as ucnorm, category
 
-def lc2geonames(text):
+def lc2geonames(text, PY3):
     if PY3:
         if not isinstance(text, str):
             str(text, 'utf-8')
