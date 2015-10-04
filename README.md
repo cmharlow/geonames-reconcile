@@ -2,6 +2,8 @@
 
 An OpenRefine reconciliation service for [GeoNames](http://www.geonames.org/).
 
+**Tested with, working on python 2.7.10, 3.4.3**
+
 The service queries the [GeoNames API](http://www.geonames.org/export/web-services.html)
 and provides normalized scores across queries for reconciling in Refine.
 
@@ -17,16 +19,16 @@ Please give any thanks for this work to Ted Lawless, and any complaints to Chris
 
 ##Special Notes
 
-This came out of frustration that the Library of Congress authorities are: 
+This came out of frustration that the Library of Congress authorities are:
 
 - haphazard in containing Latitude and Longitude in the authority records for geographic names/subjects (although a requirement for authorities now, many such authorities do not contain the coordinates currently)
-- the way that the Library of Congress authorities formulate place names for primary headings (not as subdivisions) would often return no results in the GeoNames API because of abbreviations, many of which for U.S. states were unique to the Library of Congress authorities (for example, 'Calif.' for headings of cities in California). 
+- the way that the Library of Congress authorities formulate place names for primary headings (not as subdivisions) would often return no results in the GeoNames API because of abbreviations, many of which for U.S. states were unique to the Library of Congress authorities (for example, 'Calif.' for headings of cities in California).
 
 So this service takes Library of Congress authorities headings (or headings formulated to mimic the LoC authorities structure), expand U.S. abbreviations, then reconcile against GeoNames. The returned GeoNames 'name' gives both the GeoNames name for the location as well as the coordinates. There are, no doubts, better ways to handle getting both in an OpenRefine reconciliation service, but this was a quick hack to get both while I continue to explore how OpenRefine Reconciliation Services are structured.
 
 ##Instructions
 
-Before getting started, you'll need python on your computer (this was built/tested with python 2.7.8 &mdash; if you want to run under python 3, you'll need to make some small changes) and be comfortable using OpenRefine/Google Refine. 
+Before getting started, you'll need python on your computer (this was built with python 2.7.8, updated to work with python3.4, most recently tested and worked with python 2.7.10 and 3.4.3) and be comfortable using OpenRefine/Google Refine.
 
 This reconciliation service also requires a GeoNames API username. You can find and use the one used in the original code for testing, but you'll run against maximum number counts quickly, so it is strongly recommended you get your own (free, quick & easy to obtain) GeoNames account.
 
@@ -43,7 +45,7 @@ After your account is activated, enable it for free web services: http://www.geo
 - You should see a screen telling you that the service is 'Running on http://0.0.0.0:5000/'.
 - Leaving that terminal window open and the service running, go start up OpenRefine (however you normally go about it). Open a project in OpenRefine.
 - On the column you would like to reconcile with GeoNames, click on the arrow at the top, choose 'Reconcile' > 'Start Reconciling...'
-- Click on the 'Add Standard Service' button in the bottom left corner. 
+- Click on the 'Add Standard Service' button in the bottom left corner.
 - Now enter the URL that the local service is running on - if you've changed nothing in the code except your GeoNames API username, it should be 'http://0.0.0.0:5000/reconcile'. Click Add Service.
 	- If nothing happens upon entering 'http://0.0.0.0:5000/reconcile', try 'http://localhost:5000/reconcile' or 'http://127.0.0.1:5000/reconcile' instead.
 - You should now be greeted by a list of possible reconciliation types for the GeoNames Reconciliation Service. They should be fairly straight-forward to understand, and use /geonames/all if you need the broadest search capabilities possible.
@@ -67,7 +69,7 @@ Holla if you have questions - email is charlow2(at)utk(dot)edu and Twitter handl
 
 ##Plans for Improvement
 
-I'm hoping to build in next a way for searching within reconciliation cells next. 
+I'm hoping to build in next a way for searching within reconciliation cells next.
 
 I'd like to expand the extremely rudimentary but gets the job done LoC geographic names abbreviations parser/expander text to handle other LoC Authorities abbreviations oddities. I'm afraid to say, since even the states abbreviations vary in their construction, these will need to be added on a case by case basis.
 
