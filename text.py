@@ -11,8 +11,12 @@ def normalize(text):
     spaces, removing symbols, diacritical marks (umlauts) and
     converting all newlines etc. to single spaces.
     """
-    if not isinstance(text, unicode):
-        text = unicode(text)
+    if PY3:
+        if not isinstance(text, str):
+            str(text, 'utf-8')
+    else:
+        if not isinstance(text, unicode):
+            text = unicode(text)
     text = text.lower()
     decomposed = ucnorm('NFKD', text)
     filtered = []
@@ -47,13 +51,21 @@ def url_slug(text):
 
 def tokenize(text, splits='COPZ'):
     token = []
-    for c in unicode(text):
-        if category(c)[0] in splits:
-            if len(token):
-                yield u''.join(token)
-            token = []
-        else:
-            token.append(c)
+    if PY3:
+        for c in str(text, 'utf-8'):
+            if category(c)[0] in splits:
+                if len(token):
+                    yield u''.join(token)
+                token = []
+            else:
+                token.append(c)
+    else:
+        for c in unicode(text):
+            if category(c)[0] in splits:
+                if len(token):
+                    yield u''.join(token)
+                token = []
+            else:
+                token.append(c)
     if len(token):
         yield u''.join(token)
-

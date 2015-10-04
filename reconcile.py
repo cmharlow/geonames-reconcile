@@ -115,7 +115,10 @@ def search(raw_query, query_type='/geonames/all'):
         query_type_meta = default_query
     query_index = query_type_meta[0]['index']
     try:
-        url = api_base_url + query_index  + '=' + urllib.quote(query)
+        if PY3:
+            url = api_base_url + query_index  + '=' + urllib.parse.quote(query)
+        else:
+            url = api_base_url + query_index  + '=' + urllib.quote(query)
         app.logger.debug("GeoNames API url is " + url)
         resp = requests.get(url)
         results = resp.json()

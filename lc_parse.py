@@ -1,8 +1,12 @@
 from unicodedata import normalize as ucnorm, category
 
 def lc2geonames(text):
-    if not isinstance(text, unicode):
-        text = unicode(text)
+    if PY3:
+        if not isinstance(text, str):
+            str(text, 'utf-8')
+    else:
+        if not isinstance(text, unicode):
+            text = unicode(text)
     if '(' in text:
         text = text.replace('Ala.)', ', Alabama')
         text = text.replace('Alaska)', ', Alaska')
