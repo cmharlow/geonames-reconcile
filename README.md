@@ -9,7 +9,7 @@ and provides normalized scores across queries for reconciling in Refine.
 
 I'm just a small-town metadataist in a big code world, so please don't assume I did something 'the hard way' because I had a theory or opinion or whatnot. I probably just don't know that an easier way exists. So please share your corrections and thoughts (but please don't be a jerk about it either).
 
-If you'd like to hear my thoughts about why do this instead of creating a column by pulling in URLs, or what I do with this data once I export my data to metadata records, or if we should even have to keep coordinates in bibliographic metadata records, see some thoughts here: http://christinaharlow.com/thoughts-on-geospatial-metadata/ and http://christinaharlow.com/walkthrough-of-geonames-recon-service/
+If you'd like to hear my thoughts about why do this instead of creating a column by pulling in URLs, or what I do with this data once I export my data to metadata records, or if we should even have to keep coordinates in bibliographic metadata records, see some thoughts here: http://christinaharlow.com/thoughts-on-geospatial-metadata and http://christinaharlow.com/walkthrough-of-geonames-recon-service
 
 ##Provenance
 
