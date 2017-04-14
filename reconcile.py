@@ -13,7 +13,6 @@ from operator import itemgetter
 import urllib
 from fuzzywuzzy import fuzz
 import requests
-from sys import argv
 from sys import version_info
 
 app = Flask(__name__)
