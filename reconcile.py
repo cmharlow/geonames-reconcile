@@ -74,6 +74,8 @@ query_types = [{'id': item['id'], 'name': item['name']} for item in refine_to_ge
 # but this is all we need for a simple service.
 metadata = {
     "name": "GeoNames Reconciliation Service",
+    "identifierSpace" : "http://localhost/identifier",
+    "schemaSpace" : "http://localhost/schema",
     "defaultTypes": query_types,
     "view": {
         "url": "{{id}}"
